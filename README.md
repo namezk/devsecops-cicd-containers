@@ -6,7 +6,7 @@ Kubernetes DevSecOps pipeline using AWS cloudnative services and open source sec
 
 This DevSecOps pipeline uses AWS DevOps tools AWS CodeCommit, AWS CodeBuild, and AWS CodePipeline along with other AWS services.  It is highly recommended to fully test the pipeline in lower environments and adjust as needed before deploying to production.
 
-### Build and Test: 
+### Build and Test:
 
 The buildspecs and property files for vulnerability scanning using AWS CodeBuild:
 * buildspec-gitsecrets.yml: buildspec file to perform secret analysis using open source git-secrets.
@@ -26,7 +26,7 @@ AWS lambda is used to parse the scanning analysis results and post it to AWS Sec
 
 ### CloudFormation for Pipeline:
 
-* devsecops-codepipeline-template.yaml: CloudFormation template to deploy the Kubernetes DevSecOps Pipeline 
+* devsecops-codepipeline-template.yaml: CloudFormation template to deploy the Kubernetes DevSecOps Pipeline
 
 ## Prerequisites
 
@@ -45,9 +45,9 @@ AWS lambda is used to parse the scanning analysis results and post it to AWS Sec
 ## Deploying pipeline:
 
 1. Download the CloudFormation template and pipeline code from the GitHub repo.
-2. Sign in to your AWS account if you have not done so already. 
-3. On the CloudFormation console, choose Create Stack. 
-4. Choose the CloudFormation pipeline template. 
+2. Sign in to your AWS account if you have not done so already.
+3. On the CloudFormation console, choose Create Stack.
+4. Choose the CloudFormation pipeline template.
 5. Choose Next.
 6. Under Code, provide the following information:
    i. Code details, such as repository name and the branch to trigger the pipeline.
@@ -57,14 +57,13 @@ AWS lambda is used to parse the scanning analysis results and post it to AWS Sec
    ii.If you select Snyk, provide an API key for Snyk.
 8. Under DAST, choose the DAST tool (OWASP ZAP) for dynamic testing and enter the API token, DAST tool URL, and the application URL to run the scan.
 9. Under Lambda functions, enter the Lambda function S3 bucket name, filename, and the handler name.
-10. For STG EKS cluster, enter the staging EKS cluster name. 
-11.	For PRD EKS cluster, enter the production EKS cluster name to which this pipeline deploys the container image. 
-12.	Under General, enter the email addresses to receive notifications for approvals and pipeline status changes. 
+10. For STG EKS cluster, enter the staging EKS cluster name.
+11.	For PRD EKS cluster, enter the production EKS cluster name to which this pipeline deploys the container image.
+12.	Under General, enter the email addresses to receive notifications for approvals and pipeline status changes.
 13.	Choose Next.
 14.	Complete the stack.
 15.	After the pipeline is deployed, confirm the subscription by choosing the provided link in the email to receive notifications.
 
-The provided CloudFormation template in this post is formatted for AWS GovCloud. If you’re setting this up in a standard Region, you have to adjust the partition name in the CloudFormation template. For example, change ARN values from arn:aws-us-gov to arn:aws. 
 
 ## Cleanup
 
